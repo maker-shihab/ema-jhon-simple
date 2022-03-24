@@ -1,0 +1,32 @@
+.header {
+  background: #1C2B35;
+  padding: 20px 0;
+}
+
+.header_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+
+nav ul li {
+  list-style-type: none;
+}
+
+nav ul li a {
+  display: block;
+  color: #fff;
+  font-weight: 500;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #FF9900;
+}
