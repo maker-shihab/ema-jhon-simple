@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
+import { addToDb, getStoredCart } from '../utilities/fakedb';
 import './Shope.css';
 
 const Shope = () => {
@@ -10,10 +12,18 @@ const Shope = () => {
       .then(res => res.json())
       .then(data => setProduct(data))
   },[]);
+  useEffect( () => {
+    const storeCart = getStoredCart();
+    for (const id in storeCart){
+      const addedProduct = product.find(product => product.id === id);
+      console.log(addedProduct);
+    }
+  },[])
   const handleAddToCart = (product) => {
-    console.log(product);
+    // console.log(product);
     const newCart = [...cart, product];
     setCart(newCart);
+    addToDb(product.id);
   }
   return (
     <div className='shope_container'>
@@ -27,14 +37,7 @@ const Shope = () => {
         }
       </div>
       <div className="card_container">
-        <h4 className='text-center'>Shope Container</h4>
-        <ul className='cart_list'>
-          <li>Select Item: {cart.length}</li>
-          <li>Total Price: {}</li>
-          <li>Total Shipping Price: {}</li>
-          <li>Tax: {}</li>
-          <li className='grand_total'>Grand Total: {}</li>
-        </ul>
+        <Cart cart={cart} />
       </div>
     </div>
   );

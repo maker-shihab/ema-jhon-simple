@@ -6,7 +6,7 @@ import './Product.css';
 const Product = ({product, addToCart}) => {
   const {name, price, ratings, img, seller} = product;
   return (
-    <div className='single_product'>
+    <div className='single_product'> 
       <img src={img} alt="" />
       <div className="single_product_text">
         <a href='/' className='product_name'>{name}</a>
